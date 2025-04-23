@@ -1,0 +1,130 @@
+{
+  "name": "{{Dataset_Name}}",
+  "compatibilityLevel": 1604,
+  "model": {
+    "name": "{{Dataset_Name}}",
+    "culture": "en-US",
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "pipeline_metadata",
+        "sourceLineageTag": "[control].[pipeline_metadata]",
+        "columns": [
+          {
+            "name": "table_name",
+            "dataType": "string",
+            "sourceColumn": "table_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "table_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "schema_name",
+            "dataType": "string",
+            "sourceColumn": "schema_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "schema_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "watermark_column_name",
+            "dataType": "string",
+            "sourceColumn": "watermark_column_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "watermark_column_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "watermark_value",
+            "dataType": "dateTime",
+            "sourceColumn": "watermark_value",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "watermark_value",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "insertion_date",
+            "dataType": "dateTime",
+            "sourceColumn": "insertion_date",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "insertion_date",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "pipeline_metadata",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "control"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "kind": "m",
+        "expression": "let\n    database = {{TDS_Endpoint}}\nin\n    database\n"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "SourceLineageTagType",
+        "value": "DatabaseFullyQualifiedName"
+      }
+    ]
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "DataWarehouseSource",
+            "sqlReaderQuery": "SELECT TOP (1000) [table_name]\n      ,[schema_name]\n      ,[watermark_column_name]\n      ,[watermark_value]\n      ,[insertion_date]\n  FROM [control].[pipeline_metadata]\n",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "DataWarehouseTable",
+            "schema": [],
+            "linkedService": {
+              "name": "Jewel_Warehouse",
+              "properties": {
+                "type": "DataWarehouse",
+                "typeProperties": {
+                  "artifactId": "1c01c37d-9992-4bb7-8874-813862bfa8fc",
+                  "endpoint": "vjvb72dxtk7enf6hbct27iqtpi-tprtjhvjhykuzopan3t4koivqq.datawarehouse.fabric.microsoft.com",
+                  "workspaceId": "9e34e39b-3ea9-4c15-b9e0-6ee7c5391584"
+                },
+                "annotations": []
+              }
+            },
+            "annotations": []
+          },
+          "firstRowOnly": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Lookup_SQL_Data",
+        "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "batchCount": 10,
+          "items": {
+            "value": "@activity('Lookup_SQL_Data').output.value",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "SqlServerSource",
+                  "sqlReaderQuery": {
+                    "value": "SELECT * FROM @{item().schema_name}.@{item().table_name}\nWHERE @{item().watermark_column_name} > '@{item().watermark_value}' AND @{item().watermark_column_name} <= '@{activity('LookupGetMaxModifiedDate').output.value}'",
+                    "type": "Expression"
+                  },
+                  "partitionOption": "None",
+                  "queryTimeout": "02:00:00",
+                  "datasetSettings": {
+                    "type": "SqlServerTable",
+                    "typeProperties": {
+                      "database": "AdventureWorks2022"
+                    },
+                    "schema": [],
+                    "externalReferences": {
+                      "connection": "8db48112-4da2-4e7d-9a17-73b5ebbdbbff"
+                    },
+                    "annotations": []
+                  }
+                },
+                "sink": {
+                  "type": "LakehouseTableSink",
+                  "tableActionOption": "Append",
+                  "partitionOption": "None",
+                  "datasetSettings": {
+                    "type": "LakehouseTable",
+                    "typeProperties": {
+                      "schema": {
+                        "value": "bronze",
+                        "type": "Expression"
+                      },
+                      "table": {
+                        "value": "@toLower(item().table_name)",
+                        "type": "Expression"
+                      }
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "name": "Jewel_Lakehouse_01",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "4e3a0745-9367-ab78-40b7-e4378a06824f",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Tables"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "translator": {
+                  "type": "TabularTranslator",
+                  "typeConversion": true,
+                  "typeConversionSettings": {
+                    "allowDataTruncation": true,
+                    "treatBooleanAsNumber": false
+                  }
+                },
+                "enableStaging": false
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Copy data1",
+              "dependsOn": [
+                {
+                  "activity": "LookupGetMaxModifiedDate",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Lookup",
+              "typeProperties": {
+                "source": {
+                  "type": "SqlServerSource",
+                  "sqlReaderQuery": {
+                    "value": "SELECT MAX(@{item().watermark_column_name}) AS NewWaterMarkValue FROM @{item().schema_name}.@{item().table_name}",
+                    "type": "Expression"
+                  },
+                  "partitionOption": "None",
+                  "queryTimeout": "02:00:00"
+                },
+                "datasetSettings": {
+                  "type": "SqlServerTable",
+                  "typeProperties": {
+                    "database": "AdventureWorks2022"
+                  },
+                  "schema": [],
+                  "externalReferences": {
+                    "connection": "8db48112-4da2-4e7d-9a17-73b5ebbdbbff"
+                  },
+                  "annotations": []
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "LookupGetMaxModifiedDate",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "ForEach1",
+        "dependsOn": [
+          {
+            "activity": "Lookup_SQL_Data",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
