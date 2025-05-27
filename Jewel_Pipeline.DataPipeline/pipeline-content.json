@@ -6,7 +6,10 @@
         "typeProperties": {
           "source": {
             "type": "DataWarehouseSource",
-            "sqlReaderQuery": "SELECT TOP (1000) [table_name]\n      ,[schema_name]\n      ,[watermark_column_name]\n      ,[watermark_value]\n      ,[insertion_date]\n  FROM [control].[pipeline_metadata]\n",
+            "sqlReaderQuery": {
+              "value": "SELECT [table_name]\n      ,[schema_name]\n      ,[watermark_column_name]\n      ,[watermark_value]\n      ,[insertion_date]\n      ,[SQLQuery]\n  FROM [control].[pipeline_metadata]\n",
+              "type": "Expression"
+            },
             "partitionOption": "None",
             "queryTimeout": "02:00:00"
           },
@@ -54,7 +57,7 @@
                 "source": {
                   "type": "SqlServerSource",
                   "sqlReaderQuery": {
-                    "value": "SELECT * FROM @{item().schema_name}.@{item().table_name}\nWHERE @{item().watermark_column_name} > '@{item().watermark_value}' AND @{item().watermark_column_name} <= '@{activity('LookupGetMaxModifiedDate').output.value}'",
+                    "value": "SELECT @{item().SQLQuery} FROM @{item().schema_name}.@{item().table_name}\n",
                     "type": "Expression"
                   },
                   "partitionOption": "None",
@@ -74,7 +77,6 @@
                 "sink": {
                   "type": "LakehouseTableSink",
                   "tableActionOption": "Append",
-                  "partitionOption": "None",
                   "datasetSettings": {
                     "type": "LakehouseTable",
                     "typeProperties": {
@@ -89,11 +91,11 @@
                     },
                     "schema": [],
                     "linkedService": {
-                      "name": "Jewel_Lakehouse_01",
+                      "name": "Jewel_Lakehouse_02",
                       "properties": {
                         "type": "Lakehouse",
                         "typeProperties": {
-                          "artifactId": "4e3a0745-9367-ab78-40b7-e4378a06824f",
+                          "artifactId": "12914157-8031-a874-46ae-25a835592053",
                           "workspaceId": "00000000-0000-0000-0000-000000000000",
                           "rootFolder": "Tables"
                         },
@@ -120,10 +122,10 @@
                 "secureInput": false,
                 "secureOutput": false
               },
-              "name": "Copy data1",
+              "name": "Copy_From_SQLServer_to_LAkehouse",
               "dependsOn": [
                 {
-                  "activity": "LookupGetMaxModifiedDate",
+                  "activity": "Copy_From_SQLServer_to_Files",
                   "dependencyConditions": [
                     "Completed"
                   ]
@@ -136,7 +138,7 @@
                 "source": {
                   "type": "SqlServerSource",
                   "sqlReaderQuery": {
-                    "value": "SELECT MAX(@{item().watermark_column_name}) AS NewWaterMarkValue FROM @{item().schema_name}.@{item().table_name}",
+                    "value": "SELECT MAX(@{item().watermark_column_name}) AS NewWatermarkValue FROM @{item().schema_name}.@{item().table_name}",
                     "type": "Expression"
                   },
                   "partitionOption": "None",
@@ -163,6 +165,139 @@
               },
               "name": "LookupGetMaxModifiedDate",
               "dependsOn": []
+            },
+            {
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "SqlServerSource",
+                  "sqlReaderQuery": {
+                    "value": "SELECT @{item().SQLQuery} FROM @{item().schema_name}.@{item().table_name} WHERE @{item().watermark_column_name} >\n'@{item().watermark_value}' AND @{item().watermark_column_name} <=  '@{activity('LookupGetMaxModifiedDate').output.firstRow.NewWatermarkValue}'\n",
+                    "type": "Expression"
+                  },
+                  "partitionOption": "None",
+                  "queryTimeout": "02:00:00",
+                  "datasetSettings": {
+                    "type": "SqlServerTable",
+                    "typeProperties": {
+                      "database": "AdventureWorks2022"
+                    },
+                    "schema": [],
+                    "externalReferences": {
+                      "connection": "8db48112-4da2-4e7d-9a17-73b5ebbdbbff"
+                    },
+                    "annotations": []
+                  }
+                },
+                "sink": {
+                  "type": "ParquetSink",
+                  "formatSettings": {
+                    "type": "ParquetWriteSettings",
+                    "enableVertiParquet": true
+                  },
+                  "storeSettings": {
+                    "type": "LakehouseWriteSettings"
+                  },
+                  "datasetSettings": {
+                    "type": "Parquet",
+                    "typeProperties": {
+                      "location": {
+                        "type": "LakehouseLocation",
+                        "folderPath": "stage",
+                        "fileName": {
+                          "value": "@toLower(item().table_name)",
+                          "type": "Expression"
+                        }
+                      },
+                      "compressionCodec": "snappy"
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "name": "Jewel_Lakehouse_01",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "4e3a0745-9367-ab78-40b7-e4378a06824f",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Files"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "translator": {
+                  "type": "TabularTranslator",
+                  "typeConversion": true,
+                  "typeConversionSettings": {
+                    "allowDataTruncation": true,
+                    "treatBooleanAsNumber": false
+                  }
+                },
+                "enableStaging": false
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Copy_From_SQLServer_to_Files",
+              "dependsOn": [
+                {
+                  "activity": "LookupGetMaxModifiedDate",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Script",
+              "typeProperties": {
+                "scripts": [
+                  {
+                    "text": {
+                      "value": "UPDATE [control].[pipeline_metadata] SET watermark_value = '@{activity('LookupGetMaxModifiedDate').output.firstRow.NewWatermarkValue}' WHERE table_name = '@{item().table_name}' AND [schema_name] = '@{item().schema_name}'",
+                      "type": "Expression"
+                    },
+                    "type": "Query"
+                  }
+                ],
+                "scriptBlockExecutionTimeout": "02:00:00"
+              },
+              "linkedService": {
+                "name": "Jewel_Warehouse",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "1c01c37d-9992-4bb7-8874-813862bfa8fc",
+                    "endpoint": "vjvb72dxtk7enf6hbct27iqtpi-tprtjhvjhykuzopan3t4koivqq.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "9e34e39b-3ea9-4c15-b9e0-6ee7c5391584"
+                  },
+                  "annotations": []
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "UpdateWatermarkValue",
+              "state": "Inactive",
+              "onInactiveMarkAs": "Succeeded",
+              "dependsOn": [
+                {
+                  "activity": "Copy_From_SQLServer_to_LAkehouse",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },

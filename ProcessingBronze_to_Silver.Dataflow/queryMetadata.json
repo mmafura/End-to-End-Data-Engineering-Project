@@ -1,0 +1,52 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "ProcessingBronze_to_Silver",
+  "queryGroups": [],
+  "documentLocale": "en-GB",
+  "gatewayObjectId": "a9c8640b-7075-40fd-8b1b-4d99241a534f",
+  "queriesMetadata": {
+    "bronze department": {
+      "queryId": "b18965ca-f943-4a0f-a575-fb90be67776e",
+      "queryName": "bronze department"
+    },
+    "bronze emailaddress": {
+      "queryId": "49a00010-6d86-400a-9d5c-56d5bdffeae2",
+      "queryName": "bronze emailaddress"
+    },
+    "human_resource_employee": {
+      "queryId": "4a84ad8c-64cf-4b32-b15d-5ed1f77c309d",
+      "queryName": "human_resource_employee",
+      "loadEnabled": false
+    },
+    "bronze employeepayhistory": {
+      "queryId": "6be03f8e-94c5-48d2-af76-c3e61d4b59fe",
+      "queryName": "bronze employeepayhistory"
+    },
+    "bronze person": {
+      "queryId": "250a2c0d-ea1d-4aa7-9ffa-d0f9a421be05",
+      "queryName": "bronze person"
+    },
+    "bronze personphone": {
+      "queryId": "93a6fe77-725b-4aef-8e90-4409303f04f4",
+      "queryName": "bronze personphone"
+    },
+    "bronze salesperson": {
+      "queryId": "7858440b-45dc-4de1-8bb1-70a208e67d95",
+      "queryName": "bronze salesperson"
+    },
+    "human_resource_employee_DataDestination": {
+      "queryId": "50a4782d-9b7d-44cb-8df9-6654291e189f",
+      "queryName": "human_resource_employee_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"a9c8640b-7075-40fd-8b1b-4d99241a534f\",\"DatasourceId\":\"dead6229-e073-4626-b90b-3a85249f4a1d\"}"
+    }
+  ]
+}

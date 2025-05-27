@@ -87,6 +87,20 @@
                 "value": "Automatic"
               }
             ]
+          },
+          {
+            "name": "SQLQuery",
+            "dataType": "string",
+            "sourceColumn": "SQLQuery",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SQLQuery",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
           }
         ],
         "partitions": [
