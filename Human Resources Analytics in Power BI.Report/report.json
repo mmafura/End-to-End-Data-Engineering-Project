@@ -1,0 +1,270 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.61\",\"type\":2}},\"activeSectionIndex\":4,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Attrition",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "00173df01e0d927329a1",
+      "ordinal": 4,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"66a2ae8e4a713830012d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":9.411764705882353,\"z\":0,\"width\":281.0084033613445,\"height\":172.10084033613444,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"_Measures.% Attrition Rate\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"% Attrition Rate\"},\"Name\":\"_Measures.% Attrition Rate\",\"NativeReferenceName\":\"% Attrition Rate\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"% Attrition Rate\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 172.10,
+          "width": 281.01,
+          "x": 0.00,
+          "y": 9.41,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"d610fff355e560dc0a47\",\"layouts\":[{\"id\":0,\"position\":{\"x\":516.3025210084033,\"y\":68.57142857142857,\"z\":1000,\"width\":594.2857142857142,\"height\":392.6050420168067,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Y\":[{\"queryRef\":\"_Measures.% Attrition Rate\"}],\"Category\":[{\"queryRef\":\"DimEmployee.JobRole\",\"active\":true}],\"Series\":[{\"queryRef\":\"DimEmployee.Education\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"% Attrition Rate\"},\"Name\":\"_Measures.% Attrition Rate\",\"NativeReferenceName\":\"% Attrition Rate\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"JobRole\"},\"Name\":\"DimEmployee.JobRole\",\"NativeReferenceName\":\"JobRole\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Education\"},\"Name\":\"DimEmployee.Education\",\"NativeReferenceName\":\"Education\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"% Attrition Rate\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 392.61,
+          "width": 594.29,
+          "x": 516.30,
+          "y": 68.57,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Employee Distribution",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "590cfe16a285492d16ea",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"959553eca1742ec05da5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":640,\"y\":18.823529411764707,\"z\":1000,\"width\":640,\"height\":521.6806722689075,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"treemap\",\"projections\":{\"Group\":[{\"queryRef\":\"DimEmployee.Department\",\"active\":true}],\"Values\":[{\"queryRef\":\"_Measures.ActiveEmployees\"}],\"Details\":[{\"queryRef\":\"DimEmployee.JobRole\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Department\"},\"Name\":\"DimEmployee.Department\",\"NativeReferenceName\":\"Department\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"ActiveEmployees\"},\"Name\":\"_Measures.ActiveEmployees\",\"NativeReferenceName\":\"ActiveEmployees\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"JobRole\"},\"Name\":\"DimEmployee.JobRole\",\"NativeReferenceName\":\"JobRole\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"ActiveEmployees\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"17D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 521.68,
+          "width": 640.00,
+          "x": 640.00,
+          "y": 18.82,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"a2beb2c092006170bec5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.795918367346937,\"y\":0,\"z\":0,\"width\":613.8775510204081,\"height\":540.408163265306,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"clusteredBarChart\",\"projections\":{\"Y\":[{\"queryRef\":\"_Measures.ActiveEmployees\"}],\"Category\":[{\"queryRef\":\"DimEmployee.Department\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"ActiveEmployees\"},\"Name\":\"_Measures.ActiveEmployees\",\"NativeReferenceName\":\"ActiveEmployees\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Department\"},\"Name\":\"DimEmployee.Department\",\"NativeReferenceName\":\"Department\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"ActiveEmployees\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Active Employees by Department'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"18D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 540.41,
+          "width": 613.88,
+          "x": 9.80,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Overview",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "74d02477ad47d3ba0910",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"1a127b7e0e2c335833e6\",\"layouts\":[{\"id\":0,\"position\":{\"x\":339.59183673469386,\"y\":8.16326530612245,\"z\":1000,\"width\":280.81632653061223,\"height\":279.1836734693877,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"_Measures.InactiveEmployees\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"InactiveEmployees\"},\"Name\":\"_Measures.InactiveEmployees\",\"NativeReferenceName\":\"InactiveEmployees\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"InactiveEmployees\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 279.18,
+          "width": 280.82,
+          "x": 339.59,
+          "y": 8.16,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"400a9ebf0d2a18eed5b2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":999.1836734693877,\"y\":4.897959183673469,\"z\":3000,\"width\":280.81632653061223,\"height\":279.1836734693877,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"_Measures.% Attrition Rate\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"% Attrition Rate\"},\"Name\":\"_Measures.% Attrition Rate\",\"NativeReferenceName\":\"% Attrition Rate\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"% Attrition Rate\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 279.18,
+          "width": 280.82,
+          "x": 999.18,
+          "y": 4.90,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"539504824eeccae07839\",\"layouts\":[{\"id\":0,\"position\":{\"x\":710.204081632653,\"y\":8.16326530612245,\"z\":2000,\"width\":280.81632653061223,\"height\":272.65306122448976,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"_Measures.ActiveEmployees\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"ActiveEmployees\"},\"Name\":\"_Measures.ActiveEmployees\",\"NativeReferenceName\":\"ActiveEmployees\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"ActiveEmployees\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 272.65,
+          "width": 280.82,
+          "x": 710.20,
+          "y": 8.16,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"aa15378b68a0bb186905\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":0,\"width\":280,\"height\":280,\"z\":0,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"_Measures.TotalEmployees\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"TotalEmployees\"},\"Name\":\"_Measures.TotalEmployees\",\"NativeReferenceName\":\"TotalEmployees\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"TotalEmployees\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 280.00,
+          "width": 280.00,
+          "x": 10.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"ffef38c820d96b02dc2d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.795918367346937,\"y\":290.61224489795916,\"z\":4000,\"width\":1208.1632653061224,\"height\":429.3877551020408,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Y\":[{\"queryRef\":\"_Measures.TotalEmployeesDate\"}],\"Category\":[{\"queryRef\":\"DimDate.Date.Variation.Date Hierarchy.Year\",\"active\":true},{\"queryRef\":\"DimDate.Date.Variation.Date Hierarchy.Quarter\"},{\"queryRef\":\"DimDate.Date.Variation.Date Hierarchy.Month\"},{\"queryRef\":\"DimDate.Date.Variation.Date Hierarchy.Day\"}],\"Series\":[{\"queryRef\":\"DimEmployee.Attrition\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimDate\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0},{\"Name\":\"d1\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Select\":[{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Year\"},\"Name\":\"DimDate.Date.Variation.Date Hierarchy.Year\",\"NativeReferenceName\":\"Date Year\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Quarter\"},\"Name\":\"DimDate.Date.Variation.Date Hierarchy.Quarter\",\"NativeReferenceName\":\"Date Quarter\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Month\"},\"Name\":\"DimDate.Date.Variation.Date Hierarchy.Month\",\"NativeReferenceName\":\"Date Month\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Day\"},\"Name\":\"DimDate.Date.Variation.Date Hierarchy.Day\",\"NativeReferenceName\":\"Date Day\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"TotalEmployeesDate\"},\"Name\":\"_Measures.TotalEmployeesDate\",\"NativeReferenceName\":\"TotalEmployeesDate\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"Attrition\"},\"Name\":\"DimEmployee.Attrition\",\"NativeReferenceName\":\"Attrition\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"categoryAxis\":[{\"properties\":{\"axisType\":{\"expr\":{\"Literal\":{\"Value\":\"'Categorical'\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Employee Hiring Trends'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Arial Black'''\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"17D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 429.39,
+          "width": 1208.16,
+          "x": 9.80,
+          "y": 290.61,
+          "z": 4000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Performance Tracker",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "861d45e5410a38616c14",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0163c815104959ead03a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":625.2100840336134,\"y\":346.89075630252097,\"z\":5000,\"width\":514.9579831932773,\"height\":278.3193277310924,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Y\":[{\"queryRef\":\"_Measures.SelfRating\"},{\"queryRef\":\"_Measures.ManagerRating\"}],\"Category\":[{\"queryRef\":\"DimDate.Date.Variation.Date Hierarchy.Year\",\"active\":true},{\"queryRef\":\"DimDate.Date.Variation.Date Hierarchy.Quarter\",\"active\":true},{\"queryRef\":\"DimDate.Date.Variation.Date Hierarchy.Month\",\"active\":true},{\"queryRef\":\"DimDate.Date.Variation.Date Hierarchy.Day\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"DimDate\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SelfRating\"},\"Name\":\"_Measures.SelfRating\",\"NativeReferenceName\":\"SelfRating\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"ManagerRating\"},\"Name\":\"_Measures.ManagerRating\",\"NativeReferenceName\":\"ManagerRating\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Year\"},\"Name\":\"DimDate.Date.Variation.Date Hierarchy.Year\",\"NativeReferenceName\":\"Date Year\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Quarter\"},\"Name\":\"DimDate.Date.Variation.Date Hierarchy.Quarter\",\"NativeReferenceName\":\"Date Quarter\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Month\"},\"Name\":\"DimDate.Date.Variation.Date Hierarchy.Month\",\"NativeReferenceName\":\"Date Month\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Day\"},\"Name\":\"DimDate.Date.Variation.Date Hierarchy.Day\",\"NativeReferenceName\":\"Date Day\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 278.32,
+          "width": 514.96,
+          "x": 625.21,
+          "y": 346.89,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"0585ca9b4ad0599e3173\",\"layouts\":[{\"id\":0,\"position\":{\"x\":56.470588235294116,\"y\":267.56302521008405,\"z\":1000,\"width\":324.03361344537814,\"height\":92.77310924369748,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Min(DimEmployee.HireDate)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"HireDate\"}},\"Function\":3},\"Name\":\"Min(DimEmployee.HireDate)\",\"NativeReferenceName\":\"Earliest HireDate\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"HireDate\"}},\"Function\":3}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"23D\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Start Date'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 92.77,
+          "width": 324.03,
+          "x": 56.47,
+          "y": 267.56,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"396c38078ec33d09e409\",\"layouts\":[{\"id\":0,\"position\":{\"x\":443.6974789915966,\"y\":65.88235294117646,\"z\":4000,\"width\":562.016806722689,\"height\":248.73949579831933,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Y\":[{\"queryRef\":\"_Measures.EnvironmentalSatisfaction\"},{\"queryRef\":\"_Measures.JobSatisfaction\"},{\"queryRef\":\"_Measures.RelationshipSatisfaction\"},{\"queryRef\":\"_Measures.WorkLifeBalance\"}],\"Category\":[{\"queryRef\":\"DimDate.Date.Variation.Date Hierarchy.Year\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"DimDate\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"EnvironmentalSatisfaction\"},\"Name\":\"_Measures.EnvironmentalSatisfaction\",\"NativeReferenceName\":\"EnvironmentalSatisfaction\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Year\"},\"Name\":\"DimDate.Date.Variation.Date Hierarchy.Year\",\"NativeReferenceName\":\"Date Year\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"JobSatisfaction\"},\"Name\":\"_Measures.JobSatisfaction\",\"NativeReferenceName\":\"JobSatisfaction\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"RelationshipSatisfaction\"},\"Name\":\"_Measures.RelationshipSatisfaction\",\"NativeReferenceName\":\"RelationshipSatisfaction\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"WorkLifeBalance\"},\"Name\":\"_Measures.WorkLifeBalance\",\"NativeReferenceName\":\"WorkLifeBalance\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{}}}",
+          "filters": "[]",
+          "height": 248.74,
+          "width": 562.02,
+          "x": 443.70,
+          "y": 65.88,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"98dfdec40b74a76990ac\",\"layouts\":[{\"id\":0,\"position\":{\"x\":86.05042016806722,\"y\":423.52941176470586,\"z\":2000,\"width\":281.0084033613445,\"height\":95.46218487394958,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"_Measures.LastReviewDate\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"LastReviewDate\"},\"Name\":\"_Measures.LastReviewDate\",\"NativeReferenceName\":\"LastReviewDate\"}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"20D\"}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Last Review'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":1,\"Percent\":0}}}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"17D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 95.46,
+          "width": 281.01,
+          "x": 86.05,
+          "y": 423.53,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"aa02783a80887361ee31\",\"layouts\":[{\"id\":0,\"position\":{\"x\":86.05042016806722,\"y\":549.9159663865546,\"z\":3000,\"width\":281.0084033613445,\"height\":75.29411764705883,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"_Measures.NextReviewDate\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"NextReviewDate\"},\"Name\":\"_Measures.NextReviewDate\",\"NativeReferenceName\":\"NextReviewDate\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"NextReviewDate\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"20D\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Next Review'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 75.29,
+          "width": 281.01,
+          "x": 86.05,
+          "y": 549.92,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"b5319a27e4d26c45e99c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":86.05042016806722,\"y\":0,\"z\":0,\"width\":281.0084033613445,\"height\":221.8487394957983,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimEmployee.FullName\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"FullName\"},\"Name\":\"DimEmployee.FullName\",\"NativeReferenceName\":\"FullName\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"selection\":[{\"properties\":{\"strictSingleSelect\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"singleSelect\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"FullName\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Estelle Chung'\"}}]]}}}]}},\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"FullName\"}},\"Right\":{\"Literal\":{\"Value\":\"'este'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}],\"header\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Select Employee'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"textSize\":{\"expr\":{\"Literal\":{\"Value\":\"14D\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 221.85,
+          "width": 281.01,
+          "x": 86.05,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Demographics",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"8469becf68a5594d14a0\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DimEmployee\"}},\"Property\":\"Attrition\"}},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+      "height": 720.00,
+      "name": "9ec263e09007cc607135",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"2e545b9190209e60ba00\",\"layouts\":[{\"id\":0,\"position\":{\"x\":317.3109243697479,\"y\":0,\"z\":1000,\"width\":173.44537815126048,\"height\":99.49579831932773,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(DimEmployee.Age)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Age\"}},\"Function\":4},\"Name\":\"Sum(DimEmployee.Age)\",\"NativeReferenceName\":\"Max of Age\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Age\"}},\"Function\":4}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Oldest Employee'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 99.50,
+          "width": 173.45,
+          "x": 317.31,
+          "y": 0.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"8c1fb1a6bec0383d6711\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.795918367346937,\"y\":445.71428571428567,\"z\":3000,\"width\":393.469387755102,\"height\":274.2857142857143,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"hundredPercentStackedColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"DimEmployee.AgeBins\",\"active\":true}],\"Y\":[{\"queryRef\":\"_Measures.TotalEmployeesDate\"}],\"Series\":[{\"queryRef\":\"DimEmployee.Gender\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"AgeBins\"},\"Name\":\"DimEmployee.AgeBins\",\"NativeReferenceName\":\"AgeBins\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"TotalEmployeesDate\"},\"Name\":\"_Measures.TotalEmployeesDate\",\"NativeReferenceName\":\"TotalEmployeesDate\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Gender\"},\"Name\":\"DimEmployee.Gender\",\"NativeReferenceName\":\"Gender\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"AgeBins\"}}}]},\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Employees by Age and Gender'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 274.29,
+          "width": 393.47,
+          "x": 9.80,
+          "y": 445.71,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"d866692fa0701d9091e3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":564.8979591836734,\"y\":22.857142857142854,\"z\":4000,\"width\":399.99999999999994,\"height\":290.61224489795916,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"barChart\",\"projections\":{\"Y\":[{\"queryRef\":\"_Measures.TotalEmployees\"}],\"Category\":[{\"queryRef\":\"DimEmployee.MaritalStatus\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"TotalEmployees\"},\"Name\":\"_Measures.TotalEmployees\",\"NativeReferenceName\":\"TotalEmployees\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"MaritalStatus\"},\"Name\":\"DimEmployee.MaritalStatus\",\"NativeReferenceName\":\"MaritalStatus\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"TotalEmployees\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Employees by Marital Status'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 290.61,
+          "width": 400.00,
+          "x": 564.90,
+          "y": 22.86,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"e82dcd1824eae7045b97\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.795918367346937,\"y\":194.28571428571428,\"z\":2000,\"width\":295.51020408163265,\"height\":238.36734693877548,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"DimEmployee.AgeBins\",\"active\":true}],\"Y\":[{\"queryRef\":\"_Measures.TotalEmployeesDate\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"AgeBins\"},\"Name\":\"DimEmployee.AgeBins\",\"NativeReferenceName\":\"AgeBins\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"TotalEmployeesDate\"},\"Name\":\"_Measures.TotalEmployeesDate\",\"NativeReferenceName\":\"TotalEmployeesDate\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"AgeBins\"}}}]},\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Employees by Age'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 238.37,
+          "width": 295.51,
+          "x": 9.80,
+          "y": 194.29,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"e965f7e9a5ee62409143\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.411764705882353,\"y\":0,\"z\":0,\"width\":188.23529411764704,\"height\":90.08403361344537,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(DimEmployee.Age)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Age\"}},\"Function\":3},\"Name\":\"Sum(DimEmployee.Age)\",\"NativeReferenceName\":\"Min of Age\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Age\"}},\"Function\":3}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Youngest Employee'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}}}}],\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 90.08,
+          "width": 188.24,
+          "x": 9.41,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"edda86c31cdd1eed2007\",\"layouts\":[{\"id\":0,\"position\":{\"x\":640,\"y\":342.85714285714283,\"z\":5000,\"width\":484.89795918367344,\"height\":337.95918367346934,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"lineStackedColumnComboChart\",\"projections\":{\"Category\":[{\"queryRef\":\"DimEmployee.Ethnicity\",\"active\":true}],\"Y\":[{\"queryRef\":\"_Measures.TotalEmployees\"}],\"Y2\":[{\"queryRef\":\"_Measures.AverageSalary\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measures\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"DimEmployee\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Ethnicity\"},\"Name\":\"DimEmployee.Ethnicity\",\"NativeReferenceName\":\"Ethnicity\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"TotalEmployees\"},\"Name\":\"_Measures.TotalEmployees\",\"NativeReferenceName\":\"TotalEmployees\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"AverageSalary\"},\"Name\":\"_Measures.AverageSalary\",\"NativeReferenceName\":\"AverageSalary\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"TotalEmployees\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Employees by Ethnicity and Average Salary'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 337.96,
+          "width": 484.90,
+          "x": 640.00,
+          "y": 342.86,
+          "z": 5000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}
