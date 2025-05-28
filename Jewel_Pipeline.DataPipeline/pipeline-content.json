@@ -91,7 +91,7 @@
                     },
                     "schema": [],
                     "linkedService": {
-                      "name": "Jewel_Lakehouse_02",
+                      "name": "Jewel_Bronze_Lake",
                       "properties": {
                         "type": "Lakehouse",
                         "typeProperties": {
@@ -288,8 +288,6 @@
                 "secureOutput": false
               },
               "name": "UpdateWatermarkValue",
-              "state": "Inactive",
-              "onInactiveMarkAs": "Succeeded",
               "dependsOn": [
                 {
                   "activity": "Copy_From_SQLServer_to_LAkehouse",
