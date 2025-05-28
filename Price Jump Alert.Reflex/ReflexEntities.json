@@ -1,0 +1,154 @@
+[
+  {
+    "uniqueIdentifier": "48d61be1-d261-4b78-877b-d63b29347dff",
+    "payload": {
+      "name": "Stock Dashboard",
+      "type": "kqlQueries"
+    },
+    "type": "container-v1"
+  },
+  {
+    "uniqueIdentifier": "919dad0f-2aaf-45e8-b2a0-be05089a036a",
+    "payload": {
+      "name": "Jewel_Event_House event",
+      "runSettings": {
+        "executionIntervalInSeconds": 300
+      },
+      "query": {
+        "queryString": "Stock\r\n| where [\"time\"] > ago(5m)\r\n| summarize avgPrice = avg(todecimal(bidPrice)) by symbol\r\n| project symbol, avgPrice"
+      },
+      "eventhouseItem": {
+        "itemId": "bdad371b-974b-9638-442c-b1d0bf91f504",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemType": "KustoDatabase"
+      },
+      "queryParameters": [],
+      "metadata": {
+        "workspaceId": "9e34e39b-3ea9-4c15-b9e0-6ee7c5391584",
+        "measureName": "avgPrice",
+        "dashboardId": "f5da8f98-f64c-4fbc-8002-e1511dd6172d",
+        "visualId": "3af9999c-ce1d-49b3-b28c-d0d51fcbe449"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "48d61be1-d261-4b78-877b-d63b29347dff"
+      }
+    },
+    "type": "kqlSource-v1"
+  },
+  {
+    "uniqueIdentifier": "94ec9e38-f37a-46ce-b127-c1ca4e3d29b3",
+    "payload": {
+      "name": "Jewel_Event_House event",
+      "parentContainer": {
+        "targetUniqueIdentifier": "48d61be1-d261-4b78-877b-d63b29347dff"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"templateId\":\"SourceEvent\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"SourceEventStep\",\"id\":\"cf57202f-f03a-4aba-afc3-a825de44612f\",\"rows\":[{\"name\":\"SourceSelector\",\"kind\":\"SourceReference\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"919dad0f-2aaf-45e8-b2a0-be05089a036a\"}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "43b5dc15-6ad7-41f5-aed7-651c357ab69b",
+    "payload": {
+      "name": "symbol",
+      "parentContainer": {
+        "targetUniqueIdentifier": "48d61be1-d261-4b78-877b-d63b29347dff"
+      },
+      "definition": {
+        "type": "Object"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "579196cd-1d3b-4bf2-97cd-fc146fb23d88",
+    "payload": {
+      "name": "symbol",
+      "parentObject": {
+        "targetUniqueIdentifier": "43b5dc15-6ad7-41f5-aed7-651c357ab69b"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "48d61be1-d261-4b78-877b-d63b29347dff"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"templateId\":\"IdentityPartAttribute\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"IdPartStep\",\"id\":\"57a4bb90-a172-4414-8750-b70893da2f5f\",\"rows\":[{\"name\":\"TypeAssertion\",\"kind\":\"TypeAssertion\",\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"Text\"},{\"name\":\"format\",\"type\":\"string\",\"value\":\"\"}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "be1e1d83-184e-46c2-a439-14f4f1bce900",
+    "payload": {
+      "name": "symbol tuple",
+      "parentObject": {
+        "targetUniqueIdentifier": "43b5dc15-6ad7-41f5-aed7-651c357ab69b"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "48d61be1-d261-4b78-877b-d63b29347dff"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"templateId\":\"IdentityTupleAttribute\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"IdStructureStep\",\"id\":\"9fd27741-205f-44e6-b468-9413f2dc16a0\",\"rows\":[{\"name\":\"IdPart\",\"kind\":\"IdPart\",\"arguments\":[{\"kind\":\"AttributeReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"579196cd-1d3b-4bf2-97cd-fc146fb23d88\"}],\"name\":\"idPart\"}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "78be04a9-ae2a-46bf-b641-16c483812717",
+    "payload": {
+      "name": "Jewel_Event_House event by symbol",
+      "parentObject": {
+        "targetUniqueIdentifier": "43b5dc15-6ad7-41f5-aed7-651c357ab69b"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "48d61be1-d261-4b78-877b-d63b29347dff"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"templateId\":\"SplitEvent\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"SplitEventStep\",\"id\":\"cfe5637a-8a95-4971-b526-9d0ea923d549\",\"rows\":[{\"name\":\"EventSelector\",\"kind\":\"Event\",\"arguments\":[{\"kind\":\"EventReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"94ec9e38-f37a-46ce-b127-c1ca4e3d29b3\"}],\"name\":\"event\"}]},{\"name\":\"FieldIdMapping\",\"kind\":\"FieldIdMapping\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"symbol\"},{\"kind\":\"AttributeReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"579196cd-1d3b-4bf2-97cd-fc146fb23d88\"}],\"name\":\"idPart\"}]},{\"name\":\"SplitEventOptions\",\"kind\":\"EventOptions\",\"arguments\":[{\"name\":\"isAuthoritative\",\"type\":\"boolean\",\"value\":true}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "c4e3d559-3e8a-47f5-a068-0c42a2455d80",
+    "payload": {
+      "name": "avgPrice",
+      "parentObject": {
+        "targetUniqueIdentifier": "43b5dc15-6ad7-41f5-aed7-651c357ab69b"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "48d61be1-d261-4b78-877b-d63b29347dff"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"templateId\":\"BasicEventAttribute\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"EventSelectStep\",\"id\":\"7eec6a74-b438-4e31-8a5b-2591816168c4\",\"rows\":[{\"name\":\"EventSelector\",\"kind\":\"Event\",\"arguments\":[{\"kind\":\"EventReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"78be04a9-ae2a-46bf-b641-16c483812717\"}],\"name\":\"event\"}]},{\"name\":\"EventFieldSelector\",\"kind\":\"EventField\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"avgPrice\"}]}]},{\"name\":\"EventComputeStep\",\"id\":\"605efaed-5b6c-41e3-8948-4f66450a909f\",\"rows\":[{\"name\":\"TypeAssertion\",\"kind\":\"TypeAssertion\",\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"Text\"},{\"name\":\"format\",\"type\":\"string\",\"value\":\"\"}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "d1db327e-8ccf-4648-a3aa-8fccb8879c9f",
+    "payload": {
+      "name": "Jewel_Event_House alert",
+      "parentObject": {
+        "targetUniqueIdentifier": "43b5dc15-6ad7-41f5-aed7-651c357ab69b"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "48d61be1-d261-4b78-877b-d63b29347dff"
+      },
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"templateId\":\"AttributeTrigger\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"ScalarSelectStep\",\"id\":\"72c5d392-10ff-4077-aef5-414f4fce3eb5\",\"rows\":[{\"name\":\"AttributeSelector\",\"kind\":\"Attribute\",\"arguments\":[{\"kind\":\"AttributeReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"c4e3d559-3e8a-47f5-a068-0c42a2455d80\"}],\"name\":\"attribute\"}]}]},{\"name\":\"ScalarDetectStep\",\"id\":\"b135beb9-bdb3-4cf2-ab3b-21dadd394df7\",\"rows\":[{\"name\":\"NumberTrends\",\"kind\":\"NumberTrendsBy\",\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"IncreasesByAtLeast\"},{\"name\":\"offset\",\"type\":\"number\",\"value\":100.0},{\"name\":\"inPercent\",\"type\":\"boolean\",\"value\":false}]},{\"name\":\"OccurrenceOption\",\"kind\":\"EachTime\",\"arguments\":[]}]},{\"name\":\"ActStep\",\"id\":\"09657b02-e537-4c60-9fae-9f65e0e1d593\",\"rows\":[{\"name\":\"EmailBinding\",\"kind\":\"EmailMessage\",\"arguments\":[{\"name\":\"messageLocale\",\"type\":\"string\",\"value\":\"\"},{\"name\":\"sentTo\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"mikem@lunaksolutions.co.za\"}]},{\"name\":\"copyTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"bCCTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"subject\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Activator Trigger: New event from Jewel_Event_House alert\"}]},{\"name\":\"headline\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"New event from Jewel_Event_House alert\"}]},{\"name\":\"optionalMessage\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"\"}]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[]}]}]}]}",
+        "settings": {
+          "shouldRun": true,
+          "shouldApplyRuleOnUpdate": false
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  }
+]

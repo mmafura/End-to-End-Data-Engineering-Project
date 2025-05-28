@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLDatabase",
+    "displayName": "Jewel_Event_House",
+    "description": "Jewel_Event_House"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bdad371b-974b-9638-442c-b1d0bf91f504"
+  }
+}

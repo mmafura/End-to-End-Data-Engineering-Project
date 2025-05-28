@@ -1,0 +1,22 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "d4123ff5-0183-4178-be37-73cfd03eb19f",
+        "clusterUri": "",
+        "type": "Fabric",
+        "databaseItemId": "bdad371b-974b-9638-442c-b1d0bf91f504",
+        "databaseItemName": "Jewel_Event_House"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "be542ccf-595a-43d4-a96a-780d7006fa63",
+        "content": "Stock\n| where [\"time\"] > ago(5m)\n| summarize avgPrice = avg(todecimal(bidPrice)) by symbol\n| project symbol, avgPrice",
+        "title": "",
+        "dataSourceId": "d4123ff5-0183-4178-be37-73cfd03eb19f"
+      }
+    ]
+  }
+}

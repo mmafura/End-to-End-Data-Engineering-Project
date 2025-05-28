@@ -1,0 +1,99 @@
+{
+  "schema_version": "60",
+  "tiles": [
+    {
+      "id": "3af9999c-ce1d-49b3-b28c-d0d51fcbe449",
+      "title": "Average Prices",
+      "visualType": "column",
+      "pageId": "47566d07-1640-4009-9d5c-111f3cfa87e9",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 9,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "ea425d57-39ab-4039-b522-6cafea4c0857"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilter": [],
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "drillthrough": [],
+        "selectedDataOnLoad": {
+          "all": true,
+          "limit": 10
+        }
+      }
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "4597dba5-bfb8-499f-bf9f-229389f31ad2",
+      "displayName": "Time range",
+      "description": "",
+      "beginVariableName": "_startTime",
+      "endVariableName": "_endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 1,
+        "unit": "hours"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "d85b7a7c-9575-49cb-adf8-6d33b1f8f4a9",
+      "kind": "kusto-trident",
+      "scopeId": "kusto-trident",
+      "clusterUri": "",
+      "database": "bdad371b-974b-9638-442c-b1d0bf91f504",
+      "name": "Jewel_Event_House",
+      "workspace": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Page 1",
+      "id": "47566d07-1640-4009-9d5c-111f3cfa87e9"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "d85b7a7c-9575-49cb-adf8-6d33b1f8f4a9"
+      },
+      "text": "Stock\r\n| where [\"time\"] > ago(5m)\r\n| summarize avgPrice = avg(todecimal(bidPrice)) by symbol\r\n| project symbol, avgPrice",
+      "id": "ea425d57-39ab-4039-b522-6cafea4c0857",
+      "usedVariables": []
+    }
+  ]
+}

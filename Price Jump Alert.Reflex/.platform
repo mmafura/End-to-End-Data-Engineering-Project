@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Reflex",
+    "displayName": "Price Jump Alert"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "67f57bf5-08f0-abf1-4433-5d60bdda4988"
+  }
+}

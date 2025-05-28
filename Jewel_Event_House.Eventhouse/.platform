@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventhouse",
+    "displayName": "Jewel_Event_House",
+    "description": "Jewel_Event_House"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2d0cf053-ba7d-bc4d-4f77-297644502e5f"
+  }
+}
